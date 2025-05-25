@@ -20,8 +20,6 @@ mapping transcriptions to predefined medical terms from a hospital template.
 ```plaintext
 
 Question_1/
-├── .env                     		# Environment variables (Azure keys, configs)
-├── .gitignore               		# Git ignore rules
 ├── Readme                   		# Project documentation
 ├── requirements.txt         		# Python dependencies
 
