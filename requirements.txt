@@ -1,0 +1,19 @@
+# Core FastAPI Application
+fastapi==0.109.2
+uvicorn==0.27.0
+python-multipart==0.0.9
+websockets==12.0
+
+# Data Validation & Settings
+pydantic==2.6.4
+pydantic-settings==2.2.1
+
+# Data Handling
+pandas==2.2.1
+openpyxl==3.1.2
+
+# Azure Services
+azure-cognitiveservices-speech==1.37.0  # For speech recognition (not OCR)
+
+# Environment Variables
+python-dotenv==1.0.1

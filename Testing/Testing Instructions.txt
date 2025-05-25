@@ -1,0 +1,66 @@
+
+Step-by-Step Instructions for File Upload with Text Parameters in Postman
+
+Upload Endpoint: `/api/transcribe/file`
+
+1. Open Postman.
+
+2. Set HTTP method to `POST` from the dropdown next to the request URL.
+
+3. Enter the request URL:
+   `http://127.0.0.1:8000/api/transcribe/file`
+
+4. Click on the `Body` tab (just below the URL field).
+
+5. Select `form-data`.
+
+6. Now configure your form data fields:
+
+    🔹 To Upload a File:
+
+   	* In the Key column, enter the parameter name: `file`
+   	* On the right side of the Key field, click the dropdown (default is `Text`)
+   	* Change it to `File`
+   	* In the Value column, click “Select Files”
+   	* Choose an audio file (e.g., `.webm`, `.wav`, etc.) from your system
+
+7. If your endpoint accepts additional text parameters, you can:
+
+   	* Add more rows
+   	* Set the key (e.g., `language`, `speaker`, etc.)
+   	* Leave the type as `Text` and enter the corresponding value
+
+8. Make sure your FastAPI backend is running.
+
+9. Click `Send` in Postman to make the request.
+
+---
+
+ 🔍 How to Test Endpoints in Postman
+
+ 1. Health Check
+
+* Method: `GET`
+* URL: `http://127.0.0.1:8000/api/health`
+* Auth/Headers: None required
+
+
+ 2. Test Azure Configuration
+
+* Method: `POST`
+* URL: `http://127.0.0.1:8000/api/test-azure-config`
+* Body/Headers: None required
+
+
+
+ 3. Upload File for Transcription
+
+* Method: `POST`
+* URL: `http://127.0.0.1:8000/api/transcribe/file`
+* Body:
+
+  * Type: `form-data`
+  * Key: `file` → (Set to File, then choose an audio file)
+
+
+

@@ -1,0 +1,102 @@
+/* Center the body content using flexbox */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+}
+
+/* Container that holds the content */
+.container {
+    text-align: center;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Styling for title */
+h2 {
+    margin-bottom: 20px;
+    color: blue;
+}
+
+/* Styling for buttons */
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Disabled button styling */
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Styling for the audio player (centering) */
+#audioPlayer {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+/* Styling for the status text */
+#status {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Styling for the JSON output area (no text centering) */
+#jsonOutput {
+    margin-top: 30px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    font-family: monospace;
+    color: #333;
+    font-size: 14px;
+    text-align: left;
+    /* Ensuring the text is left-aligned */
+}
+
+/* Styling for different status - Using more specific selectors */
+#status.recording {
+    color: #e74c3c !important;
+    /* Red color for recording */
+}
+
+#status.processing {
+    color: #f39c12 !important;
+    /* Yellow color for processing */
+}
+
+#status.success {
+    color: #27ae60 !important;
+    /* Green color for success */
+}
+
+#status.error {
+    color: #e74c3c !important;
+    /* Red color for error */
+}
+
+/* Styling for the label */
+.action-label {
+    font-weight: bold;
+    margin-right: 10px;
+}

@@ -1,0 +1,74 @@
+http://localhost:8000/api/transcribe/file
+
+
+// Check if the response status is 200 OK
+pm.test("Response status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+// Verify that the response content type is JSON
+pm.test("Content-Type header is application/json", function () {
+    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');
+});
+
+// Check if response time is under 200ms (ideal target, not a failure if exceeded)
+pm.test("Response time is less than 200ms (ideal target)", function () {
+    pm.expect(pm.response.responseTime).to.be.below(200);
+});
+
+// Ensure main response fields are present
+pm.test("Response has required fields: transcription and structured_data", function () {
+    const data = pm.response.json();
+    pm.expect(data).to.be.an('object');
+    pm.expect(data.transcription).to.exist;
+    pm.expect(data.structured_data).to.exist;
+});
+
+// Validate that transcription field is a non-empty string
+pm.test("Transcription is a non-empty string", function () {
+    const data = pm.response.json();
+    pm.expect(data.transcription).to.be.a('string').and.to.not.be.empty;
+});
+
+// Check that structured_data is an array (even if empty)
+pm.test("Structured data is an array (can be empty)", function () {
+    const data = pm.response.json();
+    pm.expect(data.structured_data).to.be.an('array');
+});
+
+// Validate that each structured_data entry has required properties
+pm.test("Structured data entries have all required properties", function () {
+    const data = pm.response.json();
+    data.structured_data.forEach(function(item) {
+        pm.expect(item).to.have.property('text');
+        pm.expect(item).to.have.property('type');
+        pm.expect(item).to.have.property('code');
+        pm.expect(item).to.have.property('standard_name');
+        pm.expect(item).to.have.property('confidence');
+    });
+});
+
+// Ensure confidence scores are between 0 and 1
+pm.test("Confidence scores are between 0 and 1", function () {
+    const data = pm.response.json();
+    data.structured_data.forEach(item => {
+        pm.expect(item.confidence).to.be.within(0, 1);
+    });
+});
+
+// Validate that standard names are non-empty strings
+pm.test("Standard names are non-empty strings", function () {
+    const data = pm.response.json();
+    data.structured_data.forEach(item => {
+        pm.expect(item.standard_name).to.be.a('string').and.to.not.be.empty;
+    });
+});
+
+// Azure Entity Debug Info (Optional Debug Mode): check if extra fields exist when requested
+pm.test("Azure entities and source are present when include_entities=true", function () {
+    const data = pm.response.json();
+    if (data.hasOwnProperty("azure_entities")) {
+        pm.expect(data).to.have.property("source");
+        pm.expect(data.azure_entities).to.be.an('array');
+    }
+});

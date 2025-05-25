@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Audio Test</title>
+  <link rel="icon" href="data:,"> 
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <!-- Main content container -->
+  <div class="container">
+    <h2>Live Audio Recording and Transcription</h2>
+
+    <!-- Record Audio section -->
+    <div>
+      <span class="action-label">Record Audio:</span>
+      <button id="startBtn" onclick="startRecording()">Start Recording</button>
+      <button id="stopBtn" onclick="stopRecording()" disabled>Stop Recording</button>
+    </div>
+
+    <!-- Upload Audio section -->
+    <div style="margin-top: 20px;">
+      <span class="action-label">Upload Audio:</span>
+      <input type="file" id="fileInput" accept="audio/*" onchange="uploadFile(event)" />
+    </div>
+    
+    <!-- Status display area -->
+    <p id="status"></p> <!-- Status will change based on the recording state -->
+
+    <!-- Audio player to preview the recording -->
+    <audio id="audioPlayer" controls style="display:none;"></audio>
+
+    <!-- JSON output area -->
+    <div id="jsonOutput"></div>
+  </div>
+
+  <!-- Link to the external JavaScript file -->
+  <script src="/static/app.js"></script>
+</body>
+</html>
